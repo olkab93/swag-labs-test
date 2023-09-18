@@ -1,0 +1,18 @@
+{
+  "name": "swag-labs-test",
+  "version": "1.0.0",
+  "description": "Swag Labs test repo",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
+  },
+  "keywords": [],
+  "author": "olka bochenska",
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/cypress": "^10.0.1",
+    "cypress": "^13.2.0",
+    "typescript": "^5.2.2"
+  }
+}

@@ -11,13 +11,13 @@
 
 ## Products page (homepage)
 
-- [ ] Check page header and if all displayed products have: image, name, description, price, add to cart button
-- [ ] Add a product to the cart from the products list page
-- [ ] Remove a product from the cart from the products list page
-- [ ] Filtering: A-Z
-- [ ] Filtering: Z-A
-- [ ] Filtering: price ascending (low-high)
-- [ ] Filtering: price descending (high-low)
+- [x] Check page header and if all displayed products have: image, name, description, price, add to cart button
+- [x] Add a product to the cart from the products list page
+- [x] Remove a product from the cart from the products list page
+- [x] Sorting: A-Z, is default option
+- [x] Sorting: Z-A
+- [x] Sorting: price ascending (low-high)
+- [x] Sorting: price descending (high-low)
 
 ## Product details page
 

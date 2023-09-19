@@ -29,10 +29,11 @@
 
 ## Cart
 
-- [ ] Check empty cart: page header, QTY, Description, NO items displayed, Continue shopping button, Checkout button
-- [ ] Check cart with items: product QTY, name, description, price, remove btn
-- [ ] Go back to the homepage after clicking Continue shopping button
-- [ ] Go to checkout after clicking Checkout button
+- [x] Check empty cart: page header, QTY, Description, NO items displayed, Continue shopping button, Checkout button
+- [x] Check cart with items: product QTY, name, description, price, remove btn
+- [x] Go back to the homepage after clicking Continue shopping button
+- [x] Go to checkout after clicking Checkout button
+- [x] Remove product form the cart from the cart page
 
 ## Checkout
 

@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
-    "types": ["cypress", "@testing-library/cypress"]
+    "target": "ES5",
+    "types": ["cypress", "@testing-library/cypress"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }

@@ -1,4 +1,6 @@
 import './commands/login';
+import './commands/products';
+import './commands/header';
 
 declare global {
   namespace Cypress {
@@ -32,6 +34,24 @@ declare global {
        * @example cy.loginFormClear()
        */
       loginFormClear(): void;
+
+      /**
+       * Custom command to add a product to cart.
+       * @example cy.addToCart()
+       */
+      addToCart(productName: string): void;
+
+      /**
+       * Custom command to remove a product from the cart.
+       * @example cy.removeFromCart()
+       */
+      removeFromCart(productName: string): void;
+
+      /**
+       * Custom command to go to cart.
+       * @example cy.clickCartIcon()
+       */
+      clickCartIcon(): void;
     }
   }
 }

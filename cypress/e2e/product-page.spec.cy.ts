@@ -2,9 +2,7 @@
 
 import productsFixture from '../fixtures/products.json';
 
-const productName = productsFixture.products[0].name;
-const productDescription = productsFixture.products[0].description;
-const productPrice = productsFixture.products[0].price;
+const PRODUCT = productsFixture.products[0];
 
 function goToProdPageByImg(productName: string) {
   cy.findByRole('img', { name: productName }).parent().click();
@@ -34,23 +32,23 @@ describe('Product page', () => {
 
   it('user should be able to enter product page after clicking product image', () => {
     // click product image to visit product page
-    goToProdPageByImg(productName);
+    goToProdPageByImg(PRODUCT.name);
 
     // check product page
-    checkProductContainer(productName, productDescription, productPrice);
+    checkProductContainer(PRODUCT.name, PRODUCT.description, PRODUCT.price);
   });
 
   it('user should be able to enter product page after clicking product name', () => {
     // click product name to visit product page
-    cy.findByText(productName).parent().click();
+    cy.findByText(PRODUCT.name).parent().click();
 
     // check product page
-    checkProductContainer(productName, productDescription, productPrice);
+    checkProductContainer(PRODUCT.name, PRODUCT.description, PRODUCT.price);
   });
 
   it('user should be able to go back to products list from the product page', () => {
     // go to the product page
-    goToProdPageByImg(productName);
+    goToProdPageByImg(PRODUCT.name);
 
     // click "Back to products" button
     cy.findByRole('button', { name: /GO BACK BACK TO PRODUCTS/i }).click();
@@ -61,7 +59,7 @@ describe('Product page', () => {
 
   it('user should be able to add a product to cart from the product page', () => {
     // go to the product page
-    goToProdPageByImg(productName);
+    goToProdPageByImg(PRODUCT.name);
 
     // click "Add to cart" button and check if it switches to "Remove" button
     cy.findByRole('button', { name: /ADD TO CART/i })
@@ -71,12 +69,12 @@ describe('Product page', () => {
 
     // check if cart contains added product
     cy.get('.shopping_cart_badge').should('contain.text', '1').click();
-    cy.findByText(productName).should('be.visible');
+    cy.findByText(PRODUCT.name).should('be.visible');
   });
 
   it('user should be able to remove a product from the cart from the product page', () => {
     // go to the product page
-    goToProdPageByImg(productName);
+    goToProdPageByImg(PRODUCT.name);
 
     // click "Add to cart" button and check if cart badge was updated
     cy.findByRole('button', { name: /ADD TO CART/i }).click();
@@ -88,6 +86,6 @@ describe('Product page', () => {
 
     // go to the cart and check if the product was removed
     cy.get('.shopping_cart_link').click();
-    cy.findByText(productName).should('not.exist');
+    cy.findByText(PRODUCT.name).should('not.exist');
   });
 });

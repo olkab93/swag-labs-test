@@ -6,7 +6,8 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:open:problem": "cypress open --env user_name=problem_user",
-    "cy:open:prefglitch": "cypress open --env user_name=performance_glitch_user"
+    "cy:open:prefglitch": "cypress open --env user_name=performance_glitch_user",
+    "cy:run": "cypress run -b chrome"
   },
   "keywords": [],
   "author": "olka bochenska",

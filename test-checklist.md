@@ -6,8 +6,8 @@
 - [x] Try to log in as a `regular` user with incorrect password, close error message and log in with valid credentials
 - [x] Try to log in as a `locked-out` user with valid credentials
 - [x] Try to log in with empty username and password, close error message and log in with valid credentials
-- [ ] Logout
-- [ ] Log in, delete session cookie, click cart and check if user is redirected to the login page
+- [x] Logout
+- [x] Log in, delete session cookie, click cart and check if user is redirected to the login page
 
 ## Products page (homepage)
 
@@ -41,7 +41,7 @@
 - [x] Your information page: fill in user info, click Continue
 - [x] Your information page: click Continue without filling in the form, close error message, fill in the form and click Continue again
 - [x] Overview page: check page header, click Cancel
-- [ ] Overview: check product display: qty, name, description (turuncated),price
+- [x] Overview: check product display: qty, name, description (turuncated),price
 - [x] Overview: check item total, tax and total
 - [x] Overview: click Finish button
 - [x] Complete: check page header, texts, click Back Home button

@@ -37,14 +37,14 @@
 
 ## Checkout
 
-- [ ] Your information page: check page header, click Cancel
-- [ ] Your information page: fill in user info, click Continue
-- [ ] Your information page: click Continue without filling in the form, close error message, fill in the form and click Continue again
-- [ ] Overview page: check page header, click Cancel
+- [x] Your information page: check page header, click Cancel
+- [x] Your information page: fill in user info, click Continue
+- [x] Your information page: click Continue without filling in the form, close error message, fill in the form and click Continue again
+- [x] Overview page: check page header, click Cancel
 - [ ] Overview: check product display: qty, name, description (turuncated),price
-- [ ] Overview: check item total, tax and total
-- [ ] Overview: click Finish button
-- [ ] Complete: check page header, texts, click Back Home button
+- [x] Overview: check item total, tax and total
+- [x] Overview: click Finish button
+- [x] Complete: check page header, texts, click Back Home button
 
 ## "Problematic" user
 

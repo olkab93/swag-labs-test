@@ -23,7 +23,7 @@ function checkCartItem(
 describe('Cart', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.login(Cypress.env('standard_user'), Cypress.env('valid_password'));
+    cy.login(Cypress.env('user_name'), Cypress.env('correct_password'));
   });
 
   it('cart page should be empty when no product was added and user should be able to continue shopping when clicking "Continue shopping" button', () => {

@@ -33,7 +33,7 @@ function checkSortedItemsOrder(listToCompareWith: string[]) {
 describe('Products page (homepage)', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.login(Cypress.env('standard_user'), Cypress.env('valid_password'));
+    cy.login(Cypress.env('user_name'), Cypress.env('correct_password'));
   });
 
   it('page should have a proper header and each item should have: an image, name, description, price and "Add to cart" button', () => {

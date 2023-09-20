@@ -1,6 +1,6 @@
 import './commands/login';
 import './commands/products';
-import './commands/header';
+import './commands/checkout';
 
 declare global {
   namespace Cypress {

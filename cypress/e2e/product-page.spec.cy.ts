@@ -27,7 +27,7 @@ function checkProductContainer(
 describe('Product page', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.login(Cypress.env('standard_user'), Cypress.env('valid_password'));
+    cy.login(Cypress.env('user_name'), Cypress.env('correct_password'));
   });
 
   it('user should be able to enter product page after clicking product image', () => {

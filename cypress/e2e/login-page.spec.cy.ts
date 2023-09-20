@@ -14,7 +14,7 @@ describe('Login page', () => {
 
   it('user should be logged in when entering valid credentials', () => {
     // login with valid credentials
-    cy.login(Cypress.env('standard_user'), Cypress.env('valid_password'));
+    cy.login(Cypress.env('user_name'), Cypress.env('correct_password'));
 
     // check redirection after a successfull login
     cy.url().should('contain', 'inventory.html');
@@ -22,7 +22,7 @@ describe('Login page', () => {
 
   it('locked out user should not be able to log in when entering valid credentials', () => {
     // login with locked out user's credentials
-    cy.login(Cypress.env('locked_out_user'), Cypress.env('valid_password'));
+    cy.login(Cypress.env('locked_out_user'), Cypress.env('correct_password'));
 
     // check and close error message
     cy.findByRole('heading', { name: errorMsgUserLockedOut })
@@ -37,7 +37,7 @@ describe('Login page', () => {
 
   it('user should be able to close error message and log in after re-entering valid credentials', () => {
     // try to log in with invalid password
-    cy.login(Cypress.env('standard_user'), Cypress.env('invalid_password'));
+    cy.login(Cypress.env('user_name'), Cypress.env('incorrect_password'));
 
     // check and close error message
     cy.findByRole('heading', { name: errorMsgUsernameAndPasswordNotMatching })
@@ -51,13 +51,13 @@ describe('Login page', () => {
 
     // clear login and password textboxes and login with valid credentials
     cy.loginFormClear();
-    cy.login(Cypress.env('standard_user'), Cypress.env('valid_password'));
+    cy.login(Cypress.env('user_name'), Cypress.env('correct_password'));
     cy.url().should('contain', 'inventory.html');
   });
 
   it('user should be informed that username and password are required to log in', () => {
     // enter only a password and click "Login" button
-    cy.enterPassword(Cypress.env('valid_password'));
+    cy.enterPassword(Cypress.env('correct_password'));
     cy.clickLoginButton();
 
     // check and close error message
@@ -74,7 +74,7 @@ describe('Login page', () => {
     cy.loginFormClear();
 
     // enter only a username and lick "Login button"
-    cy.enterUsername(Cypress.env('standard_user'));
+    cy.enterUsername(Cypress.env('user_name'));
     cy.clickLoginButton();
 
     // check and close error message

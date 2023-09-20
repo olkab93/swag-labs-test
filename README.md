@@ -14,6 +14,8 @@
 
   v13 was released a few weeks ago and I assume that the requirements doc is outdated; if not, it is always recommended to use the latest versions, unless significant issues occur.
 
+- `cypress.env.json` is shared separately - in 'real' project .env files should be kept in a protected vault. Keeping this file separately and not commiting is an example of that approach.
+
 - I noted that sometimes Cypress have troubles with opening the page correctly (e.g. login page is still displayed, while test is on the step of validating homepage). If this ocurrs and blocks you with checking if tests are running - go to devtools --> application --> storage and click `Clear site data` button. Then refresh Cypress page
 - Headless mode - command to run tests in headless mode is configured (`npm run cy:run`), but most of the tests are failing (even though they pass in UI mode). Running headless tests with chrome reduced problem, but it's still there. I wasn't able to find root cause or workaround for this issue.
 

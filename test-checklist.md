@@ -53,14 +53,14 @@
 ## "Performance-issues" user
 
 - [x] add command to run cypress with performance_glitch_user username
-- [ ] review and adjust timeouts if necessary
 
 ## Navigation
 
-- [ ] Click All items - check redirection
-- [ ] Click About - check redirection
-- [ ] Click Logout - covered in the logout section
-- [ ] Add items to cart, click Reset app state and check if items were removed
+- [x] Open and close side panel
+- [x] Click All items - check redirection
+- [x] Click About - check redirection
+- [x] Click Logout - covered in the logout section
+- [x] Add items to cart, click Reset app state and check if items were removed
 
 ## Footer
 

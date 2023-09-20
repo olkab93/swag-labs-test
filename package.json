@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Swag Labs test repo",
   "main": "index.js",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "cy:open": "cypress open",
     "cy:open:problem": "cypress open --env user_name=problem_user",

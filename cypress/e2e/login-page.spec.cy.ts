@@ -6,6 +6,8 @@ const errorMsgUsernameAndPasswordNotMatching =
   'Epic sadface: Username and password do not match any user in this service';
 const errorMsgUsernameRequired = 'Epic sadface: Username is required';
 const errorMsgPasswordRequired = 'Epic sadface: Password is required';
+const errorMsgNotLoggedIn =
+  "Epic sadface: You can only access '/cart.html' when you are logged in.";
 
 describe('Login page', () => {
   beforeEach(() => {
@@ -86,5 +88,43 @@ describe('Login page', () => {
     cy.findByRole('heading', { name: errorMsgPasswordRequired }).should(
       'not.exist'
     );
+  });
+
+  it('user should be able to log out', () => {
+    // login
+    cy.login(Cypress.env('user_name'), Cypress.env('correct_password'));
+
+    // open side menu and click 'Logout'
+    cy.findByRole('button', { name: /OPEN MENU/i }).click();
+    cy.findByRole('link', { name: /LOGOUT/i }).click();
+
+    // check if user was redirected to the login page
+    cy.url().should('eq', 'https://www.saucedemo.com/');
+    cy.findByRole('button', { name: /LOGIN/i }).should('be.visible');
+  });
+
+  it('user should be redirected to login page when session expires', () => {
+    // login
+    cy.login(Cypress.env('user_name'), Cypress.env('correct_password'));
+
+    // clear session-username cookie and interact with the page
+    cy.clearCookie('session-username');
+    cy.clickCartIcon();
+
+    // check redirection to the login page
+    cy.url().should('eq', 'https://www.saucedemo.com/');
+
+    // check error message and close it
+    cy.findByRole('heading', { name: errorMsgNotLoggedIn })
+      .as('errorMsg')
+      .should('be.visible')
+      .within(() => {
+        cy.findByRole('button').click();
+      });
+    cy.get('@errorMsg').should('not.exist');
+
+    // log in again and check redirection
+    cy.login(Cypress.env('user_name'), Cypress.env('correct_password'));
+    cy.url().should('contain', 'inventory.html');
   });
 });

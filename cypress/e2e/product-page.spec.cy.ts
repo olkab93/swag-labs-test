@@ -18,7 +18,7 @@ function checkProductContainer(product: Product) {
       cy.findByText(`$${product.price}`).should('be.visible');
     });
   cy.findByRole('img', { name: product.name })
-    .should('have.attr', 'src', PRODUCT.img)
+    .should('have.attr', 'src', product.img)
     .should('be.visible');
   cy.findByRole('button', { name: /ADD TO CART/i }).should('be.visible');
 }

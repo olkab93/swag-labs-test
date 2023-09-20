@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import productsFixture from '../fixtures/products.json';
+import { Product } from '../support/types/product';
 
 const PRODUCT = productsFixture.products[0];
 
@@ -8,19 +9,17 @@ function goToProdPageByImg(productName: string) {
   cy.findByRole('img', { name: productName }).parent().click();
 }
 
-function checkProductContainer(
-  productName: string,
-  productDescription: string,
-  productPrice: number
-) {
-  cy.findByText(productName)
+function checkProductContainer(product: Product) {
+  cy.findByText(product.name)
     .should('be.visible')
     .parent()
     .within(() => {
-      cy.findByText(productDescription).should('be.visible');
-      cy.findByText(`$${productPrice}`).should('be.visible');
+      cy.findByText(product.description).should('be.visible');
+      cy.findByText(`$${product.price}`).should('be.visible');
     });
-  cy.findByRole('img', { name: productName }).should('be.visible');
+  cy.findByRole('img', { name: product.name })
+    .should('have.attr', 'src', product.img)
+    .should('be.visible');
   cy.findByRole('button', { name: /ADD TO CART/i }).should('be.visible');
 }
 
@@ -35,7 +34,7 @@ describe('Product page', () => {
     goToProdPageByImg(PRODUCT.name);
 
     // check product page
-    checkProductContainer(PRODUCT.name, PRODUCT.description, PRODUCT.price);
+    checkProductContainer(PRODUCT);
   });
 
   it('user should be able to enter product page after clicking product name', () => {
@@ -43,7 +42,7 @@ describe('Product page', () => {
     cy.findByText(PRODUCT.name).parent().click();
 
     // check product page
-    checkProductContainer(PRODUCT.name, PRODUCT.description, PRODUCT.price);
+    checkProductContainer(PRODUCT);
   });
 
   it('user should be able to go back to products list from the product page', () => {

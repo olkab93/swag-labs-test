@@ -1,21 +1,20 @@
 /// <reference types="cypress" />
 
 import productsFixture from '../fixtures/products.json';
+import { Product } from '../support/types/product';
 
-const PRODUCT_NAME = productsFixture.products[0].name;
+const PRODUCT = productsFixture.products[0];
 
-function checkProductContainer(
-  productName: string,
-  productDescription: string,
-  productPrice: number
-) {
-  cy.findByText(productName)
+function checkProductContainer(product: Product) {
+  cy.findByText(product.name)
     .should('be.visible')
     .parents('.inventory_item')
     .within(() => {
-      cy.findByText(productDescription).should('be.visible');
-      cy.findByText(`$${productPrice}`).should('be.visible');
-      cy.findByRole('img', { name: productName }).should('be.visible');
+      cy.findByText(product.description).should('be.visible');
+      cy.findByText(`$${product.price}`).should('be.visible');
+      cy.findByRole('img', { name: product.name })
+        .should('have.attr', 'src', product.img)
+        .should('be.visible');
       cy.findByRole('button', { name: /ADD TO CART/i }).should('be.visible');
     });
 }
@@ -44,27 +43,27 @@ describe('Products page (homepage)', () => {
 
     // for each product displayed on the page check if it has: name, description, price, image, 'Add to cart' button displaye
     productsFixture.products.forEach((product) => {
-      checkProductContainer(product.name, product.description, product.price);
+      checkProductContainer(product);
     });
   });
 
   it('user should be able to add a product to cart from the products list', () => {
     // add product to the cart
-    cy.addToCart(PRODUCT_NAME);
+    cy.addToCart(PRODUCT.name);
 
     // go to the cart and check if added product is displayed
     cy.get('.shopping_cart_badge').should('contain.text', '1').click();
-    cy.findByText(PRODUCT_NAME).should('be.visible');
+    cy.findByText(PRODUCT.name).should('be.visible');
   });
 
   it('user should be able to remove a product from the cart from the products list', () => {
     // add product to the cart
-    cy.addToCart(PRODUCT_NAME);
+    cy.addToCart(PRODUCT.name);
 
     // remove product from the cart, go to the cart view and check if the product is not displayed there
-    cy.removeFromCart(PRODUCT_NAME);
+    cy.removeFromCart(PRODUCT.name);
     cy.clickCartIcon();
-    cy.findByText(PRODUCT_NAME).should('not.exist');
+    cy.findByText(PRODUCT.name).should('not.exist');
   });
 
   it('user should be able to sort items by name (A-Z)', () => {

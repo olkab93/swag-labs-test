@@ -1,20 +1,17 @@
 /// <reference types="Cypress"/>
 
 import productsFixture from '../fixtures/products.json';
+import { Product } from '../support/types/product';
 
 const PRODUCT_1 = productsFixture.products[0];
 const PRODUCT_2 = productsFixture.products[1];
 
-function checkCartItem(
-  productName: string,
-  productDescription: string,
-  productPrice: number
-) {
-  cy.findByText(productName)
+function checkCartItem(product: Product) {
+  cy.findByText(product.name)
     .parents('.cart_item')
     .within(() => {
-      cy.findByText(productDescription).should('be.visible');
-      cy.findByText(`$${productPrice}`).should('be.visible');
+      cy.findByText(product.description).should('be.visible');
+      cy.findByText(`$${product.price}`).should('be.visible');
       cy.findByRole('button', { name: /REMOVE/i }).should('be.visible');
       cy.get('.cart_quantity').should('have.text', '1');
     });
@@ -64,8 +61,8 @@ describe('Cart', () => {
     cy.clickCartIcon();
 
     // check display of products in the cart
-    checkCartItem(PRODUCT_1.name, PRODUCT_1.description, PRODUCT_1.price);
-    checkCartItem(PRODUCT_2.name, PRODUCT_2.description, PRODUCT_2.price);
+    checkCartItem(PRODUCT_1);
+    checkCartItem(PRODUCT_2);
 
     cy.findByRole('button', { name: /CHECKOUT/i }).click();
     cy.url().should('contain', 'checkout-step-one.html');

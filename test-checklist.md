@@ -7,7 +7,7 @@
 - [x] Try to log in as a `locked-out` user with valid credentials
 - [x] Try to log in with empty username and password, close error message and log in with valid credentials
 - [ ] Logout
-- [ ] Try to enter cart page before logging in, close error message, log in and enter the page
+- [ ] Log in, delete session cookie, click cart and check if user is redirected to the login page
 
 ## Products page (homepage)
 
@@ -48,7 +48,12 @@
 
 ## "Problematic" user
 
+- [x] add command to run cypress with problematic_user username
+
 ## "Performance-issues" user
+
+- [x] add command to run cypress with performance_glitch_user username
+- [ ] review and adjust timeouts if necessary
 
 ## Navigation
 
